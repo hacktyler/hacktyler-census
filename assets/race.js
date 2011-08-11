@@ -1,11 +1,14 @@
 var map;
 
 //tile layers
-var current_tiles = null;
-var race_tiles = new L.TileLayer("http://localhost:8001/tyler-census-race/tiles/{z}/{x}/{y}.png");
-if ( $.browser.webkit ) {
-    race_tiles.unloadInvisibleTiles = true;
-}
+var race_tiles = new L.TileLayer(
+    "http://localhost:8001/tyler-census-race/tiles/{z}/{x}/{y}.png"
+);
+var google_tiles = new L.TileLayer(
+    "http://{s}.google.com/vt/?hl=en&x={x}&y={y}&z={z}&s={s}&apistyle=s.t:33|p.v:off,p.s:-100|p.il:true,s.t:51|p.v:off,s.t:50|p.l:-50,s.t:49|p.l:-50,s.t:2|p.v:off,s.t:1|p.l:-67|p.v:off,s.t:6|s.e:l|p.v:off,s.t:4|p.v:off,s.t:5|p.l:-100,s.t:3|s.e:l|p.v:off,s.t:6|p.l:16", {
+    attribution: "Map data is Copyright Google, 2011",
+    subdomains: ['mt0','mt1','mt2','mt3']
+});
 
 //for search
 var southwest_limit = new google.maps.LatLng(32.2, -95.4);
@@ -16,7 +19,7 @@ var state_swap = 'TX';
 var tracts = {};
 var drop_marker = function(lat,lon,zoom){
     if (zoom == null){
-        zoom = 13;
+        zoom = 15;
     }
     map.setView(map.getCenter(), zoom, true);
     var latlng = new L.LatLng(lat, lon);
@@ -53,9 +56,9 @@ function parse_hash(s) {
     if (parts.length == 6) {
         var markerLat = parseFloat(parts[3]);
 		var markerLng = parseFloat(parts[4]);
-        return [lat, lng, zoom, mapType, markerLat, markerLng];
+        return [lat, lng, zoom, markerLat, markerLng];
     } else {
-        return [lat, lng, zoom, mapType];
+        return [lat, lng, zoom];
     }
     return null;
 }
@@ -70,17 +73,14 @@ function make_hash() {
 }
 
 $(document).ready(function() {
-    map = new L.Map('map_canvas', { minZoom:10, maxZoom:15 });
+    map = new L.Map('map_canvas', { minZoom:11, maxZoom:15 });
     map.setView(new L.LatLng(32.325, -95.304), 12);
 
-    tiles = new L.TileLayer("http://{s}.google.com/vt/?hl=en&x={x}&y={y}&z={z}&s={s}&apistyle=s.t:33|p.v:off,p.s:-100|p.il:true,s.t:51|p.v:off,s.t:50|p.l:-50,s.t:49|p.l:-50,s.t:2|p.v:off,s.t:1|p.l:-67|p.v:off,s.t:6|s.e:l|p.v:off,s.t:4|p.v:off,s.t:5|p.l:-100,s.t:3|s.e:l|p.v:off,s.t:6|p.l:16", {
-         attribution: "Map data is Copyright Google, 2011",
-         subdomains: ['mt0','mt1','mt2','mt3']
-    });
-    map.addLayer(tiles);
+    map.addLayer(google_tiles);
     map.addLayer(race_tiles);
     
     loc = parse_hash();
+
     if (loc) {
         var center_lat = loc[0];
         var center_lng = loc[1];

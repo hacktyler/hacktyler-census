@@ -1,16 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>2010 Census: Racial diversity in Tyler</title>
+    <title>2010 Census: Racial diversity in Smith County</title>
+
     <link rel="stylesheet" type="text/css" href="reset.css" /> 
     <link rel="stylesheet" type="text/css" href="race.css" />
-    <script src='leaflet/leaflet.js' type='text/javascript'></script>
-    <link href='leaflet/leaflet.css' rel='stylesheet' type='text/css' />
-    <!--[if lte IE 8]><link rel="stylesheet" href="leaflet/leaflet.ie.css" /><![endif]-->
-    <script src="jquery-1.6.2.min.js"></script>
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script> 
-    <script src='search.js' type='text/javascript'></script>
-    <script src='race.js' type='text/javascript'></script>
+
     <script type="text/javascript"> 
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-23208042-1']);
@@ -22,23 +17,30 @@
 <div id="map_canvas"></div>
 
 <div id="right-col">
-    <h1>2010 Census:<br/> Racial diversity in Tyler</h1>
+    <h1>2010 Census:<br/> Racial diversity in Smith County</h1>
     <div id="description">
-        <p>This map illustrates the racial mix and population density of Tyler by placing a colored dot for each ten individauls of a given race as reported in the 2010 census.</p>
+        <p>This map illustrates the racial mix and population density of Smith County by placing a colored dot for every individual in the 2010 census. Dots are colored by race and the City of Tyler is outlined in blue.</p>
         <p>Dots do not indicate the true location of any individual or household.</p>
     </div>
+
+    <h2 id="instructions">
+        <p class="story-link">Read more: <a href="http://hacktyler.com/TKTK">Hack Tyler</a></p>
+    </h2>
+
     <div class="legend">
+        <h2>City of Tyler</h2>
         <table>
-            <tr><td><div class="color nhasian"></div></td><td class="label">Asian</td><td>1,807</td><td>1.9%</td></tr>
-            <tr><td><div class="color nhblack"></div></td><td class="label">black</td><td>23,742</td><td>24.2%</td></tr>
-            <tr><td><div class="color hispanic"></div></td><td class="label">Hispanic</td><td>20,511</td><td>21.2%</td></tr>
-            <tr><td><div class="color nhwhite"></div></td><td class="label">white</td><td>49,252</td><td>50.8%</td></tr>
-            <tr><td><div></div></td><td class="label">total*</td><td>96,900</td><td>100%</td></tr>
+            <tr><th><div class="color"></div></th><th class="label">Race</th><th class="value">Population</th><th class="pct">Percent</th></tr>
+            <tr><td><div class="color nhasian"></div></td><td class="label">Asian</td><td class="value">1,807</td><td class="pct">1.9%</td></tr>
+            <tr><td><div class="color nhblack"></div></td><td class="label">Black</td><td class="value">23,742</td><td class="pct">24.2%</td></tr>
+            <tr><td><div class="color hispanic"></div></td><td class="label">Hispanic</td><td class="value">20,511</td><td class="pct">21.2%</td></tr>
+            <tr><td><div class="color nhwhite"></div></td><td class="label">White</td><td class="value">49,252</td><td class="pct">50.8%</td></tr>
+            <tr><td><div></div></td><td class="label">Total*</td><td class="value">96,900</td><td class="pct">100%</td></tr>
         </table>
     </div>
 
     <div class="note">
-        * Total population includes Native Americans, individuals who reported as being of multiple races and others not represented on the map.
+        * Total population includes Native Americans, those who reported as being of multiple races, and others who are not represented on the map.
     </div>
 
     <form id="search"> 
@@ -48,12 +50,22 @@
     </form>
 
     <div id="byline" >
-        A <a href="http://hacktyler.com">Hack Tyler</a> project. 
+        Implementation: <a href="http://twitter.com/onyxfish">Christopher Groskopf</a>
     </div>
     <div id="credits">
-	Source: <a href="http://www.census.gov/">U.S. Census Bureau</a>
+        Map style: <a href="http://blog.apps.chicagotribune.com">Chicago Tribune News Applications</a><br />
+	    Data source: <a href="http://www.census.gov/">U.S. Census Bureau</a>
 	</div>
 </div>
+
+<script src='leaflet/leaflet.js' type='text/javascript'></script>
+<link href='leaflet/leaflet.css' rel='stylesheet' type='text/css' />
+<!--[if lte IE 8]><link rel="stylesheet" href="leaflet/leaflet.ie.css" /><![endif]-->
+<script src="jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script> 
+<script src='search.js' type='text/javascript'></script>
+<script src='race.js' type='text/javascript'></script>
+<script src="tyler.js" type="text/javascript"></script>
 
 <script type="text/javascript">  (function() {
     var ga = document.createElement('script');     ga.type = 'text/javascript'; ga.async = true;
