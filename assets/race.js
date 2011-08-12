@@ -53,7 +53,7 @@ function parse_hash(s) {
     lat = parseFloat(parts[0]);
     lng = parseFloat(parts[1]);
     zoom = parseInt(parts[2]);
-    if (parts.length == 6) {
+    if (parts.length == 5) {
         var markerLat = parseFloat(parts[3]);
 		var markerLng = parseFloat(parts[4]);
         return [lat, lng, zoom, markerLat, markerLng];
