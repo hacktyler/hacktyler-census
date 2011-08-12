@@ -39,7 +39,7 @@ def deploy_to_s3():
     """
     Deploy the latest project site media to S3.
     """
-    local(('s3cmd -P --guess-mime-type sync ./assets s3://%(s3_bucket)s/%(project_name)s/') % env)
+    local(('s3cmd -P --guess-mime-type sync ./assets/ s3://%(s3_bucket)s/%(project_name)s/') % env)
 
 """
 Deaths, destroyers of worlds
