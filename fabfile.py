@@ -3,7 +3,7 @@ from fabric.api import *
 """
 Base configuration
 """
-env.project_name = 'hacktyler-census'
+env.project_name = 'census'
 
 """
 Environments
