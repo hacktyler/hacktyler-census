@@ -2,7 +2,7 @@ var map;
 
 //tile layers
 var race_tiles = new L.TileLayer(
-    "http://localhost:8001/tyler-census-race/tiles/{z}/{x}/{y}.png"
+    "http://media.hacktyler.com/maptiles/tyler-census-race/{z}/{x}/{y}.png"
 );
 var google_tiles = new L.TileLayer(
     "http://{s}.google.com/vt/?hl=en&x={x}&y={y}&z={z}&s={s}&apistyle=s.t:33|p.v:off,p.s:-100|p.il:true,s.t:51|p.v:off,s.t:50|p.l:-50,s.t:49|p.l:-50,s.t:2|p.v:off,s.t:1|p.l:-67|p.v:off,s.t:6|s.e:l|p.v:off,s.t:4|p.v:off,s.t:5|p.l:-100,s.t:3|s.e:l|p.v:off,s.t:6|p.l:16", {
