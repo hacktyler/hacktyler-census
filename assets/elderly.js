@@ -1,7 +1,7 @@
 var map;
 
 //tile layers
-var age_tiles = new L.TileLayer(
+var elderly_tiles = new L.TileLayer(
     "http://media.hacktyler.com/maptiles/tyler-census-elderly/{z}/{x}/{y}.png"
 );
 
@@ -71,7 +71,7 @@ $(document).ready(function() {
     map = new L.Map('map_canvas', { minZoom:11, maxZoom:15 });
     map.setView(new L.LatLng(32.325, -95.304), 12);
 
-    map.addLayer(age_tiles);
+    map.addLayer(elderly_tiles);
     
     loc = parse_hash();
 
